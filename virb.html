@@ -1,0 +1,92 @@
+<html class="a-html">
+<head>
+    <title>Stream</title>
+    <meta aframe-injected="" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,user-scalable=no,minimal-ui">
+    <meta aframe-injected="" name="mobile-web-app-capable" content="yes">
+    <meta aframe-injected="" name="theme-color" content="black">
+
+</head>
+<body class="a-body">
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.min.js"></script>
+    <script src="js/extras-b.js"></script>
+    <script src="js/arrow-key-rotation.js"></script>
+    <script src="js/play-on-window-click.js"></script>
+    <script src="js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
+    <script src="js/hide-once-playing.js"></script>
+    <script src="js/grab.js"></script>
+    <script src="js/components/link-controls.js"></script>
+    <script src="js/aabb-collider.js"></script>
+
+    <!-- Specify the scene. -->
+    <a-scene class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
+
+        <!-- The sphere the video is projected onto -->
+        <a-videosphere rotation="0 0 0" src="#video" play-on-window-click="" play-on-vrdisplayactivate-or-enter-vr="" position="" scale="" visible="" material="" geometry="">
+        </a-videosphere>
+
+        <!-- 3D Model assets -->
+        <a-assets>
+            <a-asset-item id="bat-obj" src="models/bat.obj"></a-asset-item>
+            <a-asset-item id="bat-mtl" src="models/bat.mtl"></a-asset-item>
+        </a-assets>
+
+
+
+        <!-- *****************All entities go below**********************-->
+
+
+        <!-- display 3D models-->
+        <a-entity class="model_grab clickable" obj-model="obj: #bat-obj; mtl: #bat-mtl" dynamic-body position=".35 1.5 -1.5" scale=".2 .2 .2"></a-entity>
+     
+        <!-- Text left of model-static -->
+        <a-entity id="overlay-left" class="clickable" position="-.75 1.725 -1.5" text="align:center;
+        width:2.5;
+        wrapCount:100;
+        color:white;
+        value: Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. "
+        geometry="primitive: plane; height: 1.2; width: .75"  rotation=".2" material="color: blue; transparent: true; opacity: 0"  scale=".8" visible="true">
+        </a-entity>
+
+        <!--Import modules for controller support-->
+        <a-entity windows-motion-controls="hand: left" id="leftHand" link-controls="hand: left" sphere-collider="objects: .model_grab" aabb-collider="objects: .model_grab;" static-body="shape: sphere; sphereRadius: 0.02;" grab></a-entity>
+        <a-entity windows-motion-controls="hand: right" id="rightHand" link-controls="hand: right" sphere-collider="objects: .model_grab" aabb-collider="objects: .model_grab;" static-body="shape: sphere; sphereRadius: 0.02;" grab></a-entity>
+
+        <!--Implement a cursor on gaze, interacts with .clickable objects -->
+        <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity>
+
+        <!-- Define camera with zero user height, movement disabled and arrow key rotation added, anything below will be attached to the camera -->
+        <a-camera user-height="0" wasd-controls-enabled="false" arrow-key-rotation="" position="" rotation="" scale="" visible="" camera="" look-controls="" wasd-controls="">
+
+            <!--Overlay fixed messages/text to the camera -->
+            <a-entity id="overlay-head" class="clickable" position="0 .4 -1" text="align:center;
+            width:2;
+            wrapCount:100;
+            color:red;
+            value:Alerts: Page from Room 647    ||    Messages: None     ||      Reminders: Check Room 342" geometry="primitive: plane; height: auto; width: 2" material="color: black" rotation=".1" scale=".8" visible="true">
+            </a-entity>
+           
+        </a-camera>
+
+        <a-assets>
+            <!-- Single source video. -->
+            <video id="video" style="display:none" autoplay="" loop="true" crossorigin="anonymous" playsinline="" webkit-playsinline="">
+                <source src="/virbStream/video.m3u8" type="application/x-mpegURL">
+            </video>
+
+            <!--Load models-->
+
+        </a-assets>
+        <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="1920" height="836" style="width: 1920px; height: 836px;"></canvas><div class="a-enter-vr" aframe-injected=""><button class="a-enter-vr-button" title="Enter VR mode with a headset or fullscreen mode on a desktop. Visit https://webvr.rocks or https://webvr.info for more information." aframe-injected=""></button></div><div class="a-orientation-modal a-hidden" aframe-injected=""><button aframe-injected="">Exit VR</button></div><a-entity light="" data-aframe-default-light="" aframe-injected="" position="" rotation="" scale="" visible=""></a-entity><a-entity light="" position="" data-aframe-default-light="" aframe-injected="" rotation="" scale="" visible=""></a-entity>
+    </a-scene>
+
+    <!-- Show a button to return to the menu -->
+    
+    <button onclick="window.location.href='index.html'" style="position:absolute;top:10px;right:10px;">
+        Return to menu
+    </button>
+    
+
+</body>
+
+</html>

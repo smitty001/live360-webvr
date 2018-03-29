@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Main</title>
+    <!--Javascript files-->
+    <meta name="description" content="Motion Capture Components – A-Frame">
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="js/components/aframe-tooltip-component.js"></script>
+    <script src="js/components/camera-position.js"></script>
+    <script src="js/components/ground.js"></script>
+    <script src="js/components/link-controls.js"></script>
+    <script src="js/aabb-collider.js"></script>
+    <script src="shaders/skyGradient.js"></script>
+  </head>
+  <body>
+    <a-scene raycaster="far: 100; objects: [link];" cursor="rayOrigin: mouse" camera-position>
+      <a-assets>
+        <!--thumb images for each stream-->
+        <img id="thumbCity" crossOrigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/city.png">
+        <img id="thumbSunrise" crossOrigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/sunrise.png">
+        <img id="thumbMountains" crossOrigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/mountains.png">
+        <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+      </a-assets>
+      <!--Create a link-->
+      <a-link href="virb.html" position="-3.5 1.5 -2.8" image="#thumbCity">234234</a-link>
+      <a-link href="virb.html" position="0 1.5 -3.0" image="#thumbSunrise"></a-link>
+      <a-link href="virb.html" position="3.5 1.5 -2.8" image="#thumbMountains"></a-link>
+      <a-entity id="sky"
+                geometry="primitive: sphere; radius: 65;"
+                material="shader: flat; color: black; side: double"></a-entity>
+      <a-entity id="ground"
+                geometry="primitive: circle; radius: 8;"
+                rotation="-90 0 0"
+                material="shader: flat; color: #abc2d3;"></a-entity>
+      <a-entity id="leftHand" link-controls="hand: left"></a-entity>
+      <a-entity id="rightHand" link-controls="hand: right"></a-entity>
+    </a-scene>
+  </body>
+</html>
