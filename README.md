@@ -1,10 +1,9 @@
 # live360-webvr
-
-# Hand Model downloaded from <https://free3d.com/3d-model/freerealsichand-85561.html>. Personal Use license
-# index.html concept taken from a-frame example showcase <https://github.com/aframevr/aframe/tree/master/examples/showcase/link-traversal>
-# written using the a-frame VR javacsript framework 
 # 2018 Microsoft Imagine Cup Entry
-# 
+
+* Hand Model downloaded from <https://free3d.com/3d-model/freerealsichand-85561.html>. Personal Use license
+* index.html concept taken from a-frame example showcase <https://github.com/aframevr/aframe/tree/master/examples/showcase/link-traversal>
+* written using the a-frame VR javascript framework 
 
 To use this basic version, follow the steps below (For Windows only at the moment).
 Microsoft Edge, python, and a Garmin Virb (Windows MR Headset Optional)
